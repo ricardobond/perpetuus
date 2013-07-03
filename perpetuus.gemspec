@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Perpetuus::VERSION
   spec.authors       = ["Ricardo Caldeira"]
   spec.email         = ["ricardo.nezz@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{A continuous deploy GEM}
+  spec.summary       = %q{Built on top of Ruby on Rails}
   spec.homepage      = ""
   spec.license       = "MIT"
 

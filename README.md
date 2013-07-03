@@ -1,5 +1,6 @@
 # Perpetuus
 [![Code Climate](https://codeclimate.com/github/ricardobond/perpetuus.png)](https://codeclimate.com/github/ricardobond/perpetuus)
+[![Dependency Status](https://gemnasium.com/ricardobond/perpetuus.png)](https://gemnasium.com/ricardobond/perpetuus)
 
 Continuous Deploy GEM for Rails Developers at Startup's environment.
 
