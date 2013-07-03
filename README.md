@@ -1,20 +1,12 @@
 # Perpetuus
 
-TODO: Write a gem description
+Continuous Deploy GEM for Rails Developers at Startup's environment.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Only install the Perpetuus gem:
 
-    gem 'perpetuus'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install perpetuus
+    gem install 'perpetuus'
 
 ## Usage
 
