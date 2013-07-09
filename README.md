@@ -26,3 +26,7 @@ TODO: Write usage instructions here
 ## Restrictions
 
 Only works with Ruby 1.9.x
+
+## Requirements
+
+- Heroku Toolbelt
