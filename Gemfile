@@ -6,3 +6,5 @@ gemspec
 gem 'colored', '1.2'
 gem 'rspec', '~> 2.13'
 gem 'octokit', '~> 1.25'
+gem 'heroku-api'
+gem 'travis', '~> 1.2'
