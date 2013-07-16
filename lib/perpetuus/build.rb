@@ -24,7 +24,7 @@ module Perpetuus
 
     def extract_user_from_git_url
       remote_url = git_remote_url
-      begin_of_user = ".com/"
+      begin_of_user = "https://github.com/"
       end_of_user = "/"
       remote_url[/#{begin_of_user}(.*?)#{end_of_user}/m, 1]
     end
@@ -35,7 +35,7 @@ module Perpetuus
 
     def git_remote_url
       remote = `git remote -v`
-      begin_of_url = "\t"
+      begin_of_url = "origin\t"
       end_of_url = " "
       remote[/#{begin_of_url}(.*?)#{end_of_url}/m, 1]
     end

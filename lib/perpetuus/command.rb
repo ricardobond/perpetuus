@@ -13,12 +13,21 @@ module Perpetuus
 			unless (system "heroku create #{@heroku_app_name}")
 				@heroku_app_name = ask_wizard("What's the app name?", "heroku")
 			end
-			system "git push heroku master"
+			Perpetuus.push_to_heroku
 		end
 
-		desc "", ""
+		desc "deploy", "Deploy your local branch to heroku if build passes"
 		def deploy
-			
+			synchronize_changes_with_remote_repository
+			build = Perpetuus::Build.new
+  		unless build.builded_with_success?
+  			puts "Build Fail!".red
+  			puts "Your code can't be deployed!"
+  			puts "Check the status at https://travis-ci.org/#{build.username}/#{build.repository}"
+  			puts build.last_build
+  			return false
+  		end
+  		Perpetuus.push_to_heroku
 		end
 
 		private
@@ -26,6 +35,19 @@ module Perpetuus
 		def ask_wizard(question, label)
 			ask "\033[1m\033[30m\033[46m" + (label.upcase || "label").rjust(10) + 
 			"\033[0m\033[36m" + "  #{question}\033[0m"
+		end
+
+		def synchronize_changes_with_remote_repository
+			git_pull
+			git_push
+		end
+
+		def git_pull
+			system "git pull"
+		end
+
+		def git_push
+			system "git push"
 		end
 
 	end
