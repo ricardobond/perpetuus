@@ -1,21 +1,5 @@
 #!/usr/bin/env ruby
-require 'rubygems'
-require 'thor'
 
-module Perpetuus
-	class MyCLI < Thor
-		desc "new APP_NAME", "setup a new rails app ready to deploy via heroku"
-		def new(name)
-			print "[RAILS]".white_on_red
-	  	print "\tGIVE A NAME TO RAILS PROJECT\n".yellow
-	  	Perpetuus.setup(gets.strip.chomp)
-		end
+require 'perpetuus'
 
-		desc "deliver", "deploy the last commited code if build passes"
-		def deliver
-			Perpetuus.deploy_to_heroku
-		end
-	end
-end
-
-Perpetuus::MyCLI.start(ARGV)
+Perpetuus::Command.start(ARGV)
