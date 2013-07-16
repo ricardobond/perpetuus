@@ -9,11 +9,6 @@ module Perpetuus
 			@rails_app_name = ask_wizard("What's the name of rails project?", "rails")
 			puts "CREATING RAILS APP...".green
 			Perpetuus.new_rails_app(@rails_app_name)
-			Perpetuus.setup_git_repository(@rails_app_name)
-			unless (system "heroku create #{@heroku_app_name}")
-				@heroku_app_name = ask_wizard("What's the app name?", "heroku")
-			end
-			Perpetuus.push_to_heroku
 		end
 
 		desc "deploy", "Deploy your local branch to heroku if build passes"
