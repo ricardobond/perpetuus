@@ -36,14 +36,16 @@ module Perpetuus
 		end
 
 		def synchronize_changes_with_remote_repository
-			unless all_up_to_date?
-				git_pull
-			end
-			git_push
+			git_pull unless all_up_to_date?
+			git_push unless nothing_to_commit?
 		end
 
 		def all_up_to_date?
 			`git pull`.include? "Already up-to-date"
+		end
+
+		def nothing_to_commit?
+			`git status`.include? "nothing to commit"
 		end
 
 		def git_pull
