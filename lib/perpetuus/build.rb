@@ -20,6 +20,13 @@ module Perpetuus
       git_repo ? true : false
     end
 
+    def git_remote_url
+      remote = `git remote -v`
+      begin_of_url = "origin\t"
+      end_of_url = " "
+      remote[/#{begin_of_url}(.*?)#{end_of_url}/m, 1]
+    end
+
     private
 
     def extract_user_from_git_url
@@ -31,13 +38,6 @@ module Perpetuus
 
     def extract_repo_name_from_git_url
       git_remote_url.split("/").last.sub(".git", "")
-    end
-
-    def git_remote_url
-      remote = `git remote -v`
-      begin_of_url = "origin\t"
-      end_of_url = " "
-      remote[/#{begin_of_url}(.*?)#{end_of_url}/m, 1]
     end
 
     def git_repo

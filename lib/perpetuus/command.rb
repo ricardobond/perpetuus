@@ -15,7 +15,10 @@ module Perpetuus
 		def deploy
 			synchronize_changes_with_remote_repository
 			build = Perpetuus::Build.new
-  		unless build.builded_with_success?
+  		if build.builded_with_success?
+  			puts "Build Success!".green
+  			puts "Remote url: #{build.git_remote_url}"
+  		else
   			puts "Build Fail!".red
   			puts "Your code can't be deployed!"
   			puts "Check the status at https://travis-ci.org/#{build.username}/#{build.repository}"
@@ -33,8 +36,14 @@ module Perpetuus
 		end
 
 		def synchronize_changes_with_remote_repository
-			git_pull
+			unless all_up_to_date?
+				git_pull
+			end
 			git_push
+		end
+
+		def all_up_to_date?
+			`git pull`.include? "Already up-to-date"
 		end
 
 		def git_pull
